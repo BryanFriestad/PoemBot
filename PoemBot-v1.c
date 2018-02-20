@@ -1,8 +1,8 @@
 /*___________________________
 PoemBot
 Created by Bryan Friestad
-v1.1.5
-12/05/2016 00:32
+v1.2.0
+2/19/2018 22:48
 ___________________________*/
 
 #include <stdio.h>
@@ -19,6 +19,20 @@ void generateLine(char line[], char* nouns[], int numNouns, char* adjs[], int nu
 void printPoem(char poem[][100], int numOfLines); //prints the formatted poem to stdout
 int isVowel(char c); //returns 1 if character is a vowel, 0 if anything else
 void printPoemToFile(char poem[][100], int numOfLines, FILE* outFile); //same as print poem, the only difference is this is meant to print to a file defined in the code
+
+//GLOBAL VARIABLES
+/*LINE TYPES*/
+	char style_1[] = "%s is like %s %s %s\n"; //noun, a/an, adjective, noun
+	char style_2[] = "%s\n"; //just a noun
+	char style_3[] = "the %s %ss\n"; //noun, verb
+	char style_4[] = "and the %s, it is %sing\n"; //noun, verb
+	char style_5[] = "%s: %s %s feels like %s %s, %s\n"; //adjective, a/an, noun, a/an, noun, adjective
+	char style_6[] = "%s? no, we all %s...\n"; //noun, verb 
+	char style_7[] = "\n"; 
+	char style_8[] = "why %s when you can %s?\n"; //verb, verb 
+	char style_9[] = "just like %s %s, the %s %ss\n"; //a/an, noun, noun, verb
+	char style_10[] = "everything %ss\n"; //verb 
+
 
 int main(void){
 	
@@ -125,7 +139,7 @@ void generateLine(char line[], char* nouns[], int numNouns, char* adjs[], int nu
 		strcat(line, nouns[nounIndex]);
 		strcat(line, "\n");
 	}
-	//odds of getting this are 2
+	//odds of getting this are 2 in 50
 	else if(lineType >= 14 && lineType < 16){
 		
 		nounIndex = rand() % numNouns;
